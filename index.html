@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="src/scripts/main.js"></script>
+    <link rel="stylesheet" href="src/styles/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://kit.fontawesome.com/db9d9c8d3d.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="src/scripts/animations/index.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/Flip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollToPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/TextPlugin.min.js"></script> -->
+    <title>QCM</title>
+</head>
+<body class="h-screen">
+    <header class="px-2 overflow-hidden sm:px-10 py-2 w-full  border-slate-400 flex justify-between" id="header">
+        <ul class="hidden sm:flex flex-1 justify-start gap-2 text-gray-600">
+            <li class="-translate-y-14"><a href="" class="text-black active">Accueil</a></li>
+            <li class="-translate-y-14"><a href="">Commencer</a></li>
+            <li class="-translate-y-14"><a href="">Classement</a></li>
+        </ul>
+        <div class=" flex-1 text-center logo h-5 overflow-hidden opacity-0" id="top-logo">MyQuiz</div>
+        <ul class="hidden sm:flex justify-end flex-1 gap-2 text-gray-600" id="pointes">
+            <li class="-translate-y-16">123 <i class="fa-solid fa-gem text-blue-500">  </i></li>
+            <li class="-translate-y-16">5 <i class="fa-solid fa-heart text-red-500">  </i></li> 
+            <li class="-translate-y-16">MyProfile</li>
+        </ul>
+    </header>
+    <main>
+        <div id="logo-box" class="bg-white w-full h-screen flex justify-center items-center overflow-hidden">
+            <div class="h-screen min-h-screen flex justify-center items-center">
+                <div class="flex-1 text-center logo text-5xl h-12 overflow-hidden" id="logo-text">MyQuiz 
+                </div>
+            </div>
+        </div>
+        <div id="hero-container" class="h-[500px]  w-full p-5">
+            <div id="container" class="h-[100%] w-full rounded-3xl overflow-hidden">
+                <h1 class="p-8 text-white text-5xl font-bold font-mono h-20 overflow-hidden">Testez vos connaissances en <span id="lng" class="">HTML</span>.</h1>
+                <p class="text-white px-9 py-5 w-[75%] sm:w-[70%] text-3xl text opacity-0" id="parag">Découvrez notre quiz interactif conçu pour tester et améliorer vos connaissances en <span class="mark">HTML, CSS et JavaScript</span>. Relevez le défi et apprenez tout en vous amusant !</p>
+                <div class="flex gap-2 px-9 py-2">
+                    <input type="button" value="Commencer mon test" class="bg-white py-3 px-5 scale-0 rounded-full btn">
+                    <input type="button" value="Voir plus" class="border-white border-2 w-44 scale-0 text-white py-3 px-5 rounded-full cursor-pointer hover:text-black hover:bg-white transition-[background-color] btn">
+                </div>
+                
+            </div>
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/Flip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollToPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/TextPlugin.min.js"></script>
+    <title>QCM</title>
+</head>
+<body class="background">
+    <div class="overflow-hidden w-full flex justify-center items-center h-screen bg-blue-500" id="loading">
+        <h1 class="text-white text-5xl font-bold font-mono h-20 overflow-hidden">Test your <span id="lng" class="">HTML</span> Knowlege</h1>
+    </div>
+    <script>
+        const span = document.getElementById("lng");
+        const languages = ["HTML", "CSS", "JS"];
+        span.style.display = 'inline-block'
+        
+        var index = 0;
+        setInterval(function(){
+            const nextLanguage = languages[(index + 1) % languages.length];
+            gsap.to(span,
+                { 
+                    y: '-100%', duration: 0.5,
+                    onComplete: ()=>{
+                        span.textContent = nextLanguage,
+                        gsap.fromTo(span, 
+                            {y: '100%'},
+                            {y: '0%'}
+                        );
+                        index = (index + 1) % languages.length;
+                    } 
+                },
+            )
+        }, 2000);
+        
+    </script>
+    <!-- <form action="" class="flex w-full sm:flex-row flex-col h-max min-h-screen p-4 justify-center items-center gap-2">
+        <div class="flex-1 sm:max-w-55 cursor-pointer hover:-translate-y-2 transition-all border-2 bottom-shadow bg-white rounded-lg hover:border-blue-500 border-transparent">
+            <div class="h-50 w-full bg-yellow-500 rounded-se-md rounded-ss-md flex justify-center items-center p-4 pattern js">
+            <img src="https://em-content.zobj.net/source/telegram/386/man-technologist_1f468-200d-1f4bb.webp" alt="" class="h-[100%]">
+            </div>
+            <div class="w-full p-1">
+            <h1 class="p-1 pb-0 text-blue-950 font-medium">Javascript</h1>
+            <p class="p-1 pt-0 text-slate-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+            <input type="button" value="start" onclick="Goto('JavaScript')" class="w-[calc(100%-8px)] bg-yellow-500 m-1 rounded-md p-1 text-white">
+            </div>
+        </div>
+        <div class="flex-1  sm:max-w-55 cursor-pointer hover:-translate-y-2 transition-all border-2 bottom-shadow bg-white rounded-lg hover:border-blue-500 border-transparent">
+            <div class="h-50 w-full bg-blue-500 rounded-se-md rounded-ss-md flex justify-center items-center p-4 pattern html">
+            <img src="https://em-content.zobj.net/source/telegram/386/alien-monster_1f47e.webp" alt="" class="h-[100%]">
+            </div>
+            <div class="w-full p-1">
+            <h1 class="p-1 pb-0 text-blue-950 font-medium">HTML</h1>
+            <p class="p-1 pt-0 text-slate-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+            <input type="button" value="start" onclick="Goto('HTML')" class="w-[calc(100%-8px)] bg-blue-500 m-1 rounded-md p-1 text-white">
+            </div>
+        </div>
+        <div class="flex-1 sm:max-w-55 cursor-pointer hover:-translate-y-2 transition-all border-2 bottom-shadow bg-white rounded-lg hover:border-blue-500 border-transparent">
+            <div class="h-50 w-full bg-orange-500 rounded-se-md rounded-ss-md flex justify-center items-center p-4 pattern css">
+            <img src="https://em-content.zobj.net/source/telegram/386/artist-palette_1f3a8.webp" alt="" class="h-[100%]">
+            </div>
+            <div class="w-full p-1">
+            <h1 class="p-1 pb-0 text-blue-950 font-medium">CSS</h1>
+            <p class="p-1 pt-0 text-slate-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+            <input type="button" value="start" onclick="Goto('Css')" class="w-[calc(100%-8px)] bg-orange-500 m-1 rounded-md p-1 text-white">
+            </div>
+        </div>
+    </form> -->
+>>>>>>> 41e0a1d8a0c91cd94a00fab21be06073c4f8c644
+</body>
+</html>
