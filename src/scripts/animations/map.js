@@ -23,7 +23,7 @@ $(document).ready(function(){
         }
     )
     gsap.fromTo(document.querySelector('#title-box'),{scale:0},{scale:1, delay: 1,duration:0.4})
-    gsap.fromTo(document.getElementById('qts').querySelectorAll('div.done, div.disabled, div.current'),{
+    gsap.fromTo(document.getElementById('qts').children,{
         scale: 0
     },{
         scale: 1,
