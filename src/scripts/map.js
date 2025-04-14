@@ -11,7 +11,7 @@ function createMap(){
         let status = (i == question)?'current':(i < question)?'done':'disabled'
         let trs = [0, 40, 55, 40, 0, -40, -55, -40, 0, 40]
         let translate = trs[i - 1]
-        let classes = `z-${(i <= question)?1:0} w-14 h-14 ${color} translate-x-[${translate}px] rounded-full my-3 flex justify-center items-center cursor-pointer ${status}`.split(' ')
+        let classes = `scale-0 z-${(i <= question)?1:0} w-14 h-14 ${color} translate-x-[${translate}px] rounded-full my-3 flex justify-center items-center cursor-pointer ${status}`.split(' ')
         for (let cls of classes) {
             div.classList.add(cls)
             if (i != question){

@@ -22,13 +22,16 @@ $(document).ready(function(){
             y: '0%', opacity: 1, duration: 0.6, stagger: 0.1,
         }
     )
-    gsap.fromTo(document.querySelector('#title-box'),{scale:0},{scale:1, delay: 1,duration:0.4})
-    gsap.fromTo(document.getElementById('qts').children,{
-        scale: 0
-    },{
-        scale: 1,
-        delay: 1,
-        duration: 0.4,
-        stagger: 0.2
+    gsap.fromTo(document.querySelector('#title-box'),{scale:0},{scale:1, delay: 1,duration:0.4,
+        onComplete:()=>{
+            gsap.fromTo(document.getElementById('qts').children,{
+                scale: 0
+            },{
+                scale: 1,
+                delay: 0,
+                duration: 0.4,
+                stagger: 0.2
+            })
+        }
     })
 })
