@@ -25,7 +25,7 @@ $(document).ready(function(){
                                 {y: 0, duration: 0.5, delay: 1, stagger: -0.2}
                             );
                             gsap.to(document.getElementsByClassName('-translate-y-16'), 
-                                {y: 0, duration: 0.5, stagger: 0.2}
+                                {y: 0, duration: 0.5, delay: 1, stagger: 0.2}
                             );
                             gsap.fromTo(document.getElementsByClassName('btn'), 
                                 {scale: 0},
