@@ -40,19 +40,19 @@ function createMap(){
     $('#s-title').text('Section '+(sections.indexOf(section) + 1))
     $('#s-text').text(`Testez vos connaissances en ${section.toUpperCase()}`)
     var icons = (section == 'html')?'html5':(section == 'js')?'square-js':'css3-alt'
-    document.getElementById('f-icon').classList.add(`fa-${icons}`)
+    document.getElementById('f-icon').classList.add(`fa-${icons}`)    
 }
 $(document).ready(function() {
     $('.current, .done').on('click', function(){
         $(this).css({
             'box-shadow':'none',
-            'transform':'translateY(5px)'
         });
+        gsap.set($(this), {y: '5px'})
         setTimeout(function(){
             $('.current, .done').css({
                 'box-shadow':`0 0.3em 0 ${(section == 'html')?'#1d74ff':(section == 'js')?'#eab308':'#f97316'}`,
-                'transform':'translateY(0px)'
-            })
+            });
+            gsap.to($('.current, .done'), {y: '0px', duration: 0})
         }, 200)
     });
     $('.current').on('click', function(){

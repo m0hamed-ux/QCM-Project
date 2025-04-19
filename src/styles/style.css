@@ -4,6 +4,10 @@
     font-weight: 400;
     font-style: normal;
 }
+html {
+    scroll-behavior: smooth;
+  
+}
 body.index{
     overflow: hidden;
 }
@@ -55,18 +59,18 @@ header ul li a{
     padding: 2px;
     position: relative;
     &::before{
-        position: absolute;
-        content: '';
+    position: absolute;
+    content: '';
         bottom: 0px;
         left: 0px;
-        height: 2px;
-        width: 0;
+    height: 2px;
+    width: 0;
         background: black;
         transition: all 0.3s ease-in;
-    }
+}
     &:hover::before{
         width: 100%;
-    }
+}
 }
 .mark{
     position: relative;
@@ -89,5 +93,83 @@ header ul li a{
 }
 #container{
     background: black;
-    background-image: url('https://images.unsplash.com/photo-1614851099511-773084f6911d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') !important;
+    /* background-image: url('https://images.unsplash.com/photo-1614851099511-773084f6911d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') !important; */
+    background: radial-gradient(ellipse at top left, #1a2e1f 10%, transparent 40%),
+              radial-gradient(ellipse at bottom right, #1a2e1f 10%, transparent 40%),
+              #000;
+    background-size: cover;
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(transparent 95%, rgba(255,255,255,0.03) 100%),
+                          linear-gradient(90deg, transparent 95%, rgba(255,255,255,0.03) 100%);
+        background-size: 40px 40px;
+        pointer-events: none;
+      }
+}
+.flex-column{
+    flex-direction: column;
+}
+.bouncing i{
+    animation: bouncing 2s infinite;
+}
+.popup{
+    animation: popup 0.2s;
+}
+@keyframes bouncing {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(100px);
+    }
+}
+@keyframes popup {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+#Commencer i{
+    width: 0px;
+    overflow: hidden;
+    transition: width 0.4s;
+}
+#Commencer:hover i{
+    width: 15px;
+}
+div#voir-plus{
+    overflow: hidden;
+    position: relative;
+    transition: color 0.3s;
+    z-index: 0;
+    &:hover{
+        color: black;
+}
+    }
+#voir-plus::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: var(--y, 50%);
+    left: var(--x, 50%);
+    background: white;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+    z-index: -1;
+    }
+
+#voir-plus:hover::before {
+    width: 500px;
+    height: 500px;
+}
+#animated-box>div>div:not(#crsr){
+    box-shadow: -0.25em 0 0 rgb(225, 225, 225);
 }

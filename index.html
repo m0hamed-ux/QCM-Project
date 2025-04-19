@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="src/scripts/main.js"></script>
     <link rel="stylesheet" href="src/styles/style.css">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://kit.fontawesome.com/db9d9c8d3d.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="src/scripts/animations/index.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/Flip.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollToPlugin.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/TextPlugin.min.js"></script> -->
-    <title>QCM</title>
+    <script src="src/scripts/animations/index.js"></script>
+    
+    
+    <title>MyQuiz</title>
 </head>
 <body class="h-screen index">
     <header class="px-2 overflow-hidden sm:px-10 py-2 w-full  border-slate-400 flex justify-between" id="header">
@@ -37,15 +36,37 @@
                 </div>
             </div>
         </div>
-        <div id="hero-container" class="h-[500px]  w-full p-5">
-            <div id="container" class="h-[100%] w-full rounded-3xl overflow-hidden">
+        <div id="hero-container" class="h-screen  w-full p-5">
+            <div id="container" class="pb-8 h-[500px] w-full flex flex-column relative justify-center items-center rounded-3xl overflow-hidden">
+                <div class="absolute flex gap-[-20px] bottom-0 left-[50%] translate-x-[-50%] translate-y-7  w-max h-max">
+                    <div class="card -rotate-12 w-24 h-24 border-5 translate-x-1 hidden bg-[url(https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Official_CSS_Logo.svg/2048px-Official_CSS_Logo.svg.png)] bg-purple-700 bg-cover border-white rounded-xl"></div>
+                    <div class="card rotate-0 w-24 h-24 -translate-y-3 border-5 hidden bg-[url(https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/2048px-Unofficial_JavaScript_logo_2.svg.png)] z-1 bg-cover border-white rounded-xl"></div>
+                    <div class="card rotate-12 w-24 h-24 border-5 -translate-x-1 hidden bg-[url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuhFEN8sricxIj_uiz8LmyDSeXO2kHv2xdUw&s)] bg-[#ff0000] bg-[length:115%] bg-center border-white rounded-xl"></div>
+                </div> 
                 <h1 class="p-8 text-white text-5xl font-bold font-mono h-20 overflow-hidden">Testez vos connaissances en <span id="lng" class="">HTML</span>.</h1>
-                <p class="text-white px-9 py-5 w-[75%] sm:w-[70%] text-3xl text opacity-0" id="parag">Découvrez notre quiz interactif conçu pour tester et améliorer vos connaissances en <span class="mark">HTML, CSS et JavaScript</span>. Relevez le défi et apprenez tout en vous amusant !</p>
+                <p class="text-slate-300 text-center px-9 py-5 w-[75%] sm:w-[70%] text-2xl text opacity-0" id="parag">Découvrez notre quiz interactif conçu pour tester et améliorer vos connaissances en <span class="mark">HTML, CSS et JavaScript</span>. Relevez le défi et apprenez tout en vous amusant !</p>
                 <div class="flex gap-2 px-9 py-2">
-                    <input type="button" value="Commencer mon test" class="bg-white py-3 px-5 scale-0 rounded-full btn">
-                    <input type="button" value="Voir plus" class="border-white border-2 w-44 scale-0 text-white py-3 px-5 rounded-full cursor-pointer hover:text-black hover:bg-white transition-[background-color] btn">
+                    <div class="bg-white py-3 px-5 scale-0 rounded-full btn" id="Commencer">
+                        <a href="" class="font-bold flex justify-center items-center gap-2">Commencer mon test <i class="fa-solid fa-arrow-right ml-2"></i></a>
+                    </div>
+                    <div class="text-center border-white border-2 w-44 scale-0 text-white py-3 px-5 rounded-full cursor-pointer hover:text-black transition-[background-color] btn" id="voir-plus">
+                        <a href="#plus" class="w-full text-center" >Voir plus</a>
+                    </div>
+                    
                 </div>
-                
+            </div>
+        </div>
+        <div class="" id="plus">
+            <h1 class="text-center text-5xl">Des quiz amusants et rapides pour booster <br> vos compétences en front-end !</h1>
+            <p class="text-center text-xl text-gray-500 py-3">Vous pensez connaître HTML, CSS et JS ? Prouvez-le !</p>
+        </div>
+        <div class="flex w-full">
+            <div class="w-[60%] flex flex-column justify-center pl-36 pr-10">
+            <h1 class="text-4xl"><span class="counting text-6xl">0</span> Question pour tester vos compétences en front-end</h1>
+            <p class="text-lg text-gray-500 py-3">Mettez-vous au défi avec nos quiz interactifs et améliorez vos compétences en développement front-end de manière ludique et engageante !</p>
+            </div>
+            <div class="flex-1 flex justify-center flex-column items-center pr-36 py-8 relative" id="animated-box">
+                <div class="w-full h-[250px] my-20 bg-yellow-500 rounded-2xl"></div>
             </div>
         </div>
     </main>
