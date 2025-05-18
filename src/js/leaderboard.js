@@ -112,7 +112,7 @@ function displayLeaderboard(users) {
     
     leaderboardBody.innerHTML = users.map((user, index) => `
         <tr class="relative transition-colors ${index % 2 === 0 ? 'bg-slate-50' : 'bg-white'} hover:bg-slate-100 ${(user.username == 'Toi') ? 'bg-indigo-50 text-blue-400 font-bold border-l-4 border-blue-400 hover:bg-indigo-100' : ''}">
-            ${(user.username == 'Toi') ? '<div class="absolute left-0 top-0 bottom-0 w-1 bg-indigo-600"></div>' : ''}
+            ${(user.username == 'Toi') ? '' : ''}
             <td class="py-4 px-4 sm:px-6 font-medium flex items-center">
                 <div class="flex items-center gap-1.5">
                     <span class="${index < 3 ? 'font-bold text-amber-700' : ''}">#${index + 1}</span>
