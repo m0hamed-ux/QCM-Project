@@ -76,21 +76,14 @@ function initializeLeaderboard() {
 // Display top 3 players
 function displayTopPlayers(topPlayers) {
     const topPlayersContainer = document.getElementById('top-players');
-    const positions = ['2nd Place', '1st Place', '3rd Place'];
+    const positions = ['2ème Place', '1ère Place', '3ème Place'];
     const colors = ['from-slate-200 to-slate-100', 'from-yellow-200 to-amber-100', 'from-amber-300 to-amber-200'];
 
     topPlayersContainer.innerHTML = topPlayers.map((player, index) => `
         <div class="bg-white rounded-xl overflow-hidden border border-gray-200 shadow-lg transform transition-all duration-300 hover:scale-105 ${index === 1 ? 'md:-mt-4 md:mb-4 scale-105 md:scale-110 z-10' : ''}">
             <div class="bg-gradient-to-b ${colors[index]} p-3 flex justify-center items-center">
                 <div class="flex items-center space-x-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trophy text-amber-500">
-                        <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
-                        <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
-                        <path d="M4 22h16"></path>
-                        <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
-                        <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
-                        <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
-                    </svg>
+                    <img src="${index == 1 ? 'https://em-content.zobj.net/source/telegram/386/1st-place-medal_1f947.webp': index == 2? 'https://em-content.zobj.net/source/telegram/386/3rd-place-medal_1f949.webp':'https://em-content.zobj.net/source/telegram/386/2nd-place-medal_1f948.webp'}" class="w-10 mx-auto" alt="">
                     <span class="font-bold ${index === 1 ? 'text-amber-700' : 'text-gray-700'}">${positions[index]}</span>
                 </div>
             </div>
@@ -101,11 +94,11 @@ function displayTopPlayers(topPlayers) {
                 <h3 class="font-bold text-lg mb-1 text-gray-800">${player.username}</h3>
                 <div class="text-3xl font-bold mb-2 bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">${player.points} pts</div>
                 <div class="grid grid-cols-2 gap-x-4 gap-y-2 text-sm text-gray-600">
-                    <div>Score:</div>
+                    <div>Score :</div>
                     <div class="font-semibold text-gray-800">${player.score}/10</div>
-                    <div>Time:</div>
+                    <div>Temps :</div>
                     <div class="font-semibold text-gray-800">${Math.floor(player.time / 60)}:${(player.time % 60).toString().padStart(2, '0')}</div>
-                    <div>Last Quiz:</div>
+                    <div>Dernier Quiz :</div>
                     <div class="font-semibold text-gray-800">${player.lastQuiz}</div>
                 </div>
             </div>
