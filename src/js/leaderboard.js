@@ -39,9 +39,7 @@ function getCurrentUserData() {
     return null;
 }
 
-// Initialize leaderboard
 function initializeLeaderboard() {
-    // Check if user has completed any quiz
     const hasCompletedQuiz = localStorage.getItem('lastQuizPoints') !== null;
     const noQuizMessage = document.getElementById('no-quiz-message');
     const leaderboardContent = document.getElementById('leaderboard-content');
@@ -57,28 +55,21 @@ function initializeLeaderboard() {
 
     let users = [...sampleUsers];
     
-    // Add current user data if available
     const currentUser = getCurrentUserData();
     if (currentUser) {
-        // Check if user already exists in the array
         const existingUserIndex = users.findIndex(user => user.username === currentUser.username);
         
         if (existingUserIndex !== -1) {
-            // Update existing user's data
             users[existingUserIndex] = currentUser;
         } else {
-            // Add new user
             users.push(currentUser);
         }
     }
 
-    // Sort users by points in descending order
     users.sort((a, b) => b.points - a.points);
 
-    // Display top 3 players
     displayTopPlayers([users[1], users[0], users[2]]);
 
-    // Display full leaderboard
     displayLeaderboard(users);
 }
 
@@ -122,7 +113,7 @@ function displayTopPlayers(topPlayers) {
     `).join('');
 }
 
-// Display full leaderboard
+
 function displayLeaderboard(users) {
     const leaderboardBody = document.getElementById('leaderboard-body');
     
@@ -159,5 +150,4 @@ function displayLeaderboard(users) {
     `).join('');
 }
 
-// Initialize when the page loads
 document.addEventListener('DOMContentLoaded', initializeLeaderboard);

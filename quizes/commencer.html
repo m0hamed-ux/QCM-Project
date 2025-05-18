@@ -37,7 +37,7 @@
                 </p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- HTML5 Mastery Card -->
+         
                 <div class="group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                     <div class="aspect-w-16 aspect-h-9 relative overflow-hidden">
                         <img src="https://images.pexels.com/photos/1591060/pexels-photo-1591060.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1"
@@ -76,7 +76,7 @@
                         </button>
                     </div>
                 </div>
-                <!-- CSS Wizardry Card -->
+           
                 <div class="group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                     <div class="aspect-w-16 aspect-h-9 relative overflow-hidden">
                         <img src="https://images.pexels.com/photos/92904/pexels-photo-92904.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1"
@@ -117,7 +117,7 @@
                         </button>
                     </div>
                 </div>
-                <!-- JavaScript Journey Card -->
+            
                 <div class="group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                     <div class="aspect-w-16 aspect-h-9 relative overflow-hidden">
                         <img src="https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1"
@@ -156,7 +156,7 @@
                         </button>
                     </div>
                 </div>
-                <!-- React Mastery Card -->
+          
                 <div class="group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                     <div class="aspect-w-16 aspect-h-9 relative overflow-hidden">
                         <img src="https://images.pexels.com/photos/11035471/pexels-photo-11035471.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1"
@@ -196,7 +196,7 @@
                         </button>
                     </div>
                 </div>
-                <!-- Bootstrap Basics Card -->
+         
                 <div class="group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                     <div class="aspect-w-16 aspect-h-9 relative overflow-hidden">
                         <img src="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1"
@@ -242,7 +242,6 @@
         </div>
     </section>
     <script>
-        // Get current section and progress from localStorage
         let currentSection = localStorage.getItem('section') || 'html';
         let jsProgress = (localStorage.getItem('jsProgress')) ? parseInt(localStorage.getItem('jsProgress')) : 0;
         let htmlProgress = (localStorage.getItem('htmlProgress')) ? parseInt(localStorage.getItem('htmlProgress')) : 0;
@@ -250,7 +249,6 @@
         let reactProgress = (localStorage.getItem('reactProgress')) ? parseInt(localStorage.getItem('reactProgress')) : 0;
         let bootstrapProgress = (localStorage.getItem('bootstrapProgress')) ? parseInt(localStorage.getItem('bootstrapProgress')) : 0;
 
-        // Function to update section states
         function updateSectionStates() {
             const sections = document.querySelectorAll('.group');
             const sectionsOrder = ['html', 'css', 'js', 'react', 'bootstrap'];
@@ -263,12 +261,10 @@
                 const progressText = section.querySelector('.text-slate-600');
                 const progressPercent = section.querySelector('.font-medium');
                 
-                // Get section name from the title
                 const sectionName = section.querySelector('h3').textContent.toLowerCase();
                 let progress = 0;
                 let totalLessons = 10; // Total lessons per section
                 
-                // Set progress based on section
                 if (sectionName.includes('javascript')) {
                     progress = jsProgress;
                 } else if (sectionName.includes('html')) {
@@ -281,37 +277,29 @@
                     progress = bootstrapProgress;
                 }
 
-                // Calculate percentage
                 const percentage = Math.round((progress / totalLessons) * 100);
                 
-                // Update progress bar and text
                 progressBar.style.width = `${percentage}%`;
                 progressText.textContent = `${progress} sur ${totalLessons} quiz complétés`;
                 progressPercent.textContent = `${percentage}%`;
 
-                // Check if all sections are completed
                 if (progress < totalLessons) {
                     allSectionsCompleted = false;
                 }
 
-                // Update section state
                 if (index < currentSectionIndex) {
-                    // Completed sections
                     button.classList.add('opacity-50', 'cursor-not-allowed');
                     button.classList.add('bg-green-500', 'hover:bg-green-600');
                     button.innerHTML = 'Terminé <i class="fa-solid fa-check"></i>';
                 } else if (index === currentSectionIndex) {
-                    // Current section
                     button.classList.remove('opacity-50', 'cursor-not-allowed');
                     button.onclick = () => window.location.href = 'map.html';
                 } else {
-                    // Future sections
                     button.classList.add('opacity-50', 'cursor-not-allowed');
                     button.onclick = null;
                 }
             });
 
-            // If all sections are completed, show completion message and navigation buttons
             if (allSectionsCompleted) {
                 const container = document.querySelector('.container');
                 container.innerHTML = `
@@ -331,15 +319,11 @@
             }
         }
 
-        // Function to restart the quiz
         function restartQuiz() {
-            // Reset all progress
             localStorage.clear();
-            // Reload the page
             window.location.reload();
         }
 
-        // Call the function when page loads
         document.addEventListener('DOMContentLoaded', updateSectionStates);
     </script>
 </body>

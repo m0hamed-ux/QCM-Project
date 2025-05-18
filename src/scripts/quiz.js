@@ -306,8 +306,7 @@ const questionsList = [
         }
     ],
     [
-        // React Quiz (10 questions, some with code execution)
-        {
+         {
             ques: "Quel hook React permet de gérer l'état local dans un composant fonctionnel ?",
             choises: [
                 "useState",
@@ -409,8 +408,7 @@ const questionsList = [
         }
     ],
     [
-        // Bootstrap Quiz (10 questions)
-        {
+         {
             ques: "Quel est le CDN officiel pour inclure Bootstrap CSS dans un projet ?",
             choises: [
                 "https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css",
@@ -548,7 +546,7 @@ function startTimer() {
         
         if (timeLeft <= 0) {
             clearInterval(timer);
-            fullTime += 15; // Add full time when timer ends
+            fullTime += 15; 
             localStorage.setItem('fullTime', fullTime);
             document.getElementById('slow').style.display = 'block'
             setTimeout(() => {
@@ -560,7 +558,7 @@ function startTimer() {
 }
 
 function loadData() {
-    // Accept new sections in validation
+    
     if (
         !section ||
         section.trim() === '' ||
@@ -578,7 +576,6 @@ function loadData() {
 
     document.getElementById('title').innerText = section;
 
-    // Determine which section is active
     if (section.toLocaleLowerCase() == "javascript" || section.toLocaleLowerCase() == "js") {
         questions = questionsList[0];
         Qnum = jsProgress;
@@ -605,7 +602,7 @@ function loadData() {
         sectionData = 'bootstrapProgress';
         sectionIndex = 4;
     } else {
-        // fallback, should not happen due to validation above
+    
     }
     updatePointsDisplay(); // Update points display when quiz loads
     refresh();
@@ -690,7 +687,6 @@ function nextQuestion() {
         }
     }
     if (chk) {
-        // Add remaining time to fullTime
         fullTime += (15 - timeLeft);
         localStorage.setItem('fullTime', fullTime);
         
@@ -720,7 +716,6 @@ function nextQuestion() {
 }
 
 function skip() {
-    // Add remaining time to fullTime
     fullTime += (15 - timeLeft);
     localStorage.setItem('fullTime', fullTime);
     
@@ -747,7 +742,6 @@ function skip() {
 }
 
 function result() {
-    // Now totals for all 5 sections
     let totals = [0, 0, 0, 0, 0];
     let total = totals[sectionIndex];
     for (let i = 0; i < 10; i++) {
@@ -756,11 +750,9 @@ function result() {
         }
     }
     localStorage.setItem(`${section}Score`, totals[sectionIndex]);
-    // If last section, calculate overall score and go to score page
     if (section === 'bootstrap') {
         let overallTotal = 0;
         for (let idx = 0; idx < 5; idx++) {
-            // Only count if userAnswers exist for that section
             if (userAnswers[idx] && userAnswers[idx].length === 10) {
                 overallTotal += totals[idx];
             }
