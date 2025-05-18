@@ -53,7 +53,7 @@ $(document).ready(function(){
                             }
                             )
                         const paragraphs = document.querySelectorAll('#parag');
-                            gsap.to(paragraphs, {opacity : 1})
+                        gsap.to(paragraphs, {opacity : 1})
                         paragraphs.forEach(paragraph => {
                             const words = paragraph.textContent.split(' ');
                             paragraph.innerHTML = '';
@@ -153,6 +153,57 @@ $(document).ready(function(){
 
         observer.observe(animatedBox);
     }
+    const communityDiv = document.getElementById('community-title');
+    if (communityDiv) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    positions = [
+                        {top: '102px', left: '220px'},
+                        {top: '249px', left: '113px'},
+                        {bottom: '102px', left: '230px'},
+                        {top: '55px' },
+                        {top: '102px', right: '220px'},
+                        {top: '236px', right: '120px'},
+                        {bottom: '112px', right: '235px'},
+                        {bottom: '60px'}
+                    ];
+                    positions.forEach((position, index) => {
+                        gsap.to(`.circle-img:nth-child(${index + 1})`, {
+                            ...position,
+                            duration: 1,
+                            ease: 'power1.inOut'
+                        });
+                    });   
+                    const paragraphs = document.querySelectorAll('#community-title, #community-text');
+                    gsap.to(paragraphs, {opacity : 1})
+                    paragraphs.forEach(paragraph => {
+                        const words = paragraph.textContent.split(' ');
+                        paragraph.innerHTML = '';
+                        words.forEach((word, index) => {
+                            const span = document.createElement('span');
+                            span.textContent = word;
+                            span.style.display = 'inline-block';
+                            paragraph.appendChild(span);
+                            if (index < words.length - 1) {
+                                    const space = document.createTextNode(' ');
+                                    paragraph.appendChild(space);
+                            }
+                        });
+                        const wordSpans = paragraph.querySelectorAll('span');
+                        gsap.fromTo(wordSpans, 
+                            { y: '100%', opacity: 0 },
+                            { 
+                                    y: '0%', opacity: 1, duration: 1, stagger: 0.05
+                            }
+                        );
+                    });                                
+                }
+            });
+        }, { threshold: 0.1 });
+
+        observer.observe(communityDiv);
+    }
     function PopingUpAnimation() {
         gsap.from('.card', {
             opacity: 0,
@@ -162,6 +213,8 @@ $(document).ready(function(){
             ease: 'elastic.out(1, 0.3)'
         });
     }
+        
+    
     
 
     // document.getElementsByClassName('bounce-img').forEach(img=>{

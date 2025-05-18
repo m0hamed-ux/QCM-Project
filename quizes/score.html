@@ -10,6 +10,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/db9d9c8d3d.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+    <!-- Highlight.js styles (pick a theme you like) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
 </head>
 <body onload="calcScore()">
     <body class="w-full h-screen flex flex-col items-center p-4 bg-slate-100">
@@ -43,7 +47,6 @@
                 </div>
                 
             </div>
-            <img src="https://em-content.zobj.net/source/telegram/386/trophy_1f3c6.webp" alt="" class="w-25 ">
             <h3 class="text-yellow-500 font-medium text-2xl p-2" id="comment">Perfect</h3>
             <p class="p-0 m-0 text-slate-400" id="commentDesc">Perfrect game</p>
             <div class="max-w-[80%] w-max flex gap-3 justify-center p-4">
@@ -66,7 +69,7 @@
             </div>
             
             <div class="w-full">
-                <div class="w-full flex h-max items-center bg-yellow-500 p-[2.2px] mb-2 rounded-lg cursor-pointer">
+                <div class="w-full flex h-max items-center bg-yellow-500 jssection p-[2.2px] mb-2 rounded-lg cursor-pointer">
                     <div class="bg-white flex-1 flex items-center gap-1 p-1 rounded-md ">
                         <i class="fa-brands fa-square-js text-yellow-500 font-medium text-[30px]"></i>
                         <div class="text-yellow-500 font-medium flex-1">JavaScript</div>
@@ -83,6 +86,7 @@
                                 ></path>
                                 <path
                                     class="text-yellow-500"
+                                    id="jsSc"
                                     d="M18 2.0845
                                        a 15.9155 15.9155 0 0 1 0 31.831
                                        a 15.9155 15.9155 0 0 1 0 -31.831"
@@ -94,7 +98,7 @@
                                 ></path>
                             </svg>
                             <div class="absolute inset-0 flex items-center justify-center">
-                                <span class="text-xs font-semibold text-yellow-500">7/10</span>
+                                <span class="text-xs font-semibold text-yellow-500" id="jsTxt">7/10</span>
                             </div>
                         </div>
                     </div>
@@ -118,6 +122,7 @@
                                 ></path>
                                 <path
                                     class="text-blue-500"
+                                    id="cssSc"
                                     d="M18 2.0845
                                        a 15.9155 15.9155 0 0 1 0 31.831
                                        a 15.9155 15.9155 0 0 1 0 -31.831"
@@ -129,7 +134,7 @@
                                 ></path>
                             </svg>
                             <div class="absolute inset-0 flex items-center justify-center">
-                                <span class="text-xs font-semibold text-blue-500">5/10</span>
+                                <span class="text-xs font-semibold text-blue-500" id="cssTxt">5/10</span>
                             </div>
                         </div>
                     </div>
@@ -153,6 +158,7 @@
                                 ></path>
                                 <path
                                     class="text-orange-500"
+                                    id="htmlSc"
                                     d="M18 2.0845
                                        a 15.9155 15.9155 0 0 1 0 31.831
                                        a 15.9155 15.9155 0 0 1 0 -31.831"
@@ -164,13 +170,100 @@
                                 ></path>
                             </svg>
                             <div class="absolute inset-0 flex items-center justify-center">
-                                <span class="text-xs font-semibold text-orange-500">9/10</span>
+                                <span class="text-xs font-semibold text-orange-500" id="htmlTxt">9/10</span>
+                            </div>
+                        </div>
+                    </div>
+                    <i class="fa-solid p-1 fa-caret-right text-white"></i>
+                </div>
+
+                <div class="w-full flex h-max items-center bg-cyan-500 p-[2.2px] mb-2 rounded-lg cursor-pointer">
+                    <div class="bg-white flex-1 flex items-center gap-1 p-1 rounded-md ">
+                        <i class="fa-brands fa-react text-cyan-500 font-medium text-[30px]"></i>
+                        <div class="text-cyan-500 font-medium flex-1">React</div>
+                        <div class="relative w-10 h-10">
+                            <svg class="absolute top-0 left-0 w-full h-full" viewBox="0 0 36 36">
+                                <path
+                                    class="text-gray-300"
+                                    d="M18 2.0845
+                                       a 15.9155 15.9155 0 0 1 0 31.831
+                                       a 15.9155 15.9155 0 0 1 0 -31.831"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2.5"
+                                ></path>
+                                <path
+                                    class="text-cyan-500"
+                                    id="reactSc"
+                                    d="M18 2.0845
+                                       a 15.9155 15.9155 0 0 1 0 31.831
+                                       a 15.9155 15.9155 0 0 1 0 -31.831"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2.5"
+                                    stroke-dasharray="0, 100"
+                                    stroke-linecap="round"
+                                ></path>
+                            </svg>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="text-xs font-semibold text-cyan-500" id="reactTxt">0/10</span>
+                            </div>
+                        </div>
+                    </div>
+                    <i class="fa-solid p-1 fa-caret-right text-white"></i>
+                </div>
+
+                <div class="w-full flex h-max items-center bg-purple-500 p-[2.2px] mb-2 rounded-lg cursor-pointer">
+                    <div class="bg-white flex-1 flex items-center gap-1 p-1 rounded-md ">
+                        <i class="fa-brands fa-bootstrap text-purple-500 font-medium text-[30px]"></i>
+                        <div class="text-purple-500 font-medium flex-1">Bootstrap</div>
+                        <div class="relative w-10 h-10">
+                            <svg class="absolute top-0 left-0 w-full h-full" viewBox="0 0 36 36">
+                                <path
+                                    class="text-gray-300"
+                                    d="M18 2.0845
+                                       a 15.9155 15.9155 0 0 1 0 31.831
+                                       a 15.9155 15.9155 0 0 1 0 -31.831"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2.5"
+                                ></path>
+                                <path
+                                    class="text-purple-500"
+                                    id="bootstrapSc"
+                                    d="M18 2.0845
+                                       a 15.9155 15.9155 0 0 1 0 31.831
+                                       a 15.9155 15.9155 0 0 1 0 -31.831"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2.5"
+                                    stroke-dasharray="0, 100"
+                                    stroke-linecap="round"
+                                ></path>
+                            </svg>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="text-xs font-semibold text-purple-500" id="bootstrapTxt">0/10</span>
                             </div>
                         </div>
                     </div>
                     <i class="fa-solid p-1 fa-caret-right text-white"></i>
                 </div>
             </div>
+            <div id="sectionReviewModal" class="fixed inset-0 bg-white bg-opacity-40 flex justify-center z-50 hidden">
+                <div class="bg-white rounded-lg shadow-lg max-w-2xl w-full overflow-y-auto p-6 relative">
+                    <button onclick="closeSectionReview()" class="fixed top-0 text-gray-500 font-bold mb-3 hover:text-gray-800 text-3xl">&times;</button>
+                    <h2 class="text-xl font-bold mb-4 mt-4" id="sectionReviewTitle">Section Review</h2>
+                    <div id="sectionReviewContent"></div>
+                </div>
+            </div>
+        <div class="flex justify-between w-full mt-8">
+            <a href="map.html" class="bg-slate-200 hover:bg-slate-300 text-slate-700 px-6 py-2 rounded-lg transition-colors">
+                <i class="bi bi-arrow-left"></i> Retour à l'accueil
+            </a>
+            <a href="map.html" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg transition-colors">
+                <i class="bi bi-trophy"></i> Voir le classement
+            </a>
+        </div>
         </main>
     </body>
 </body>

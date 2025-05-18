@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript</title>
+    <link rel="stylesheet" href="../src/styles/style.css">
+    <link rel="stylesheet" href="../src/styles/map.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/db9d9c8d3d.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+</head>
+<body onload="createMap()">
+    <header class="px-2 overflow-hidden sm:px-10 py-2 w-full  border-slate-400 flex justify-between" id="header">
+        <ul class="hidden sm:flex flex-1 justify-start gap-2 text-gray-600">
+            <li ><a href="../index.html">Accueil</a></li>
+            <li ><a href="#" class="text-black active">Commencer</a></li>
+            <li ><a href="class.html">Classement</a></li>
+        </ul>
+        <div class=" flex-1 text-center logo h-5 overflow-hidden" id="top-logo">MyQuiz</div>
+        <ul class="hidden sm:flex justify-end flex-1 gap-2 text-gray-600" id="pointes">
+            <li >MyProfile</li>
+        </ul>
+    </header>
+    <section class="py-16 md:py-24">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4">Choisissez Votre Parcours</h1>
+                <p class="text-lg text-slate-700">
+                    Sélectionnez un quiz pour commencer votre parcours de développement front-end
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- HTML5 Mastery Card -->
+                <div class="group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="aspect-w-16 aspect-h-9 relative overflow-hidden">
+                        <img src="https://images.pexels.com/photos/1591060/pexels-photo-1591060.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1"
+                             alt="HTML5 Mastery"
+                             class="w-full h-48 object-cover transform transition-transform duration-300 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 flex items-center">
+                            <div class="p-2 rounded-lg bg-orange-500 hover:bg-orange-600 bg-opacity-90">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                     class="lucide lucide-panels-top-left w-6 h-6 text-white">
+                                    <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+                                    <path d="M3 9h18"></path>
+                                    <path d="M9 21V9"></path>
+                                </svg>
+                            </div>
+                            <h3 class="ml-3 text-xl font-bold text-white">HTML5 Mastery</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-slate-700 mb-4">
+                            Maîtrisez le HTML sémantique, l'accessibilité et les pratiques modernes de balisage.
+                        </p>
+                        <div class="mb-4">
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="text-slate-600">12 sur 20 quiz complétés</span>
+                                <span class="font-medium text-slate-700">65%</span>
+                            </div>
+                            <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                                <div class="h-full bg-orange-500 hover:bg-orange-600 transition-all duration-300" style="width: 65%;"></div>
+                            </div>
+                        </div>
+                        <button class="w-full py-3 px-6 rounded-lg text-white font-medium transition-colors bg-orange-500 hover:bg-orange-600">
+                            Commencer le Quiz
+                        </button>
+                    </div>
+                </div>
+                <!-- CSS Wizardry Card -->
+                <div class="group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="aspect-w-16 aspect-h-9 relative overflow-hidden">
+                        <img src="https://images.pexels.com/photos/92904/pexels-photo-92904.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1"
+                             alt="CSS Wizardry"
+                             class="w-full h-48 object-cover transform transition-transform duration-300 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 flex items-center">
+                            <div class="p-2 rounded-lg bg-blue-500 hover:bg-blue-600 bg-opacity-90">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                     class="lucide lucide-palette w-6 h-6 text-white">
+                                    <circle cx="13.5" cy="6.5" r=".5"></circle>
+                                    <circle cx="17.5" cy="10.5" r=".5"></circle>
+                                    <circle cx="8.5" cy="7.5" r=".5"></circle>
+                                    <circle cx="6.5" cy="12.5" r=".5"></circle>
+                                    <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="ml-3 text-xl font-bold text-white">CSS Wizardry</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-slate-700 mb-4">
+                            Apprenez les techniques CSS avancées, les animations et le design responsive.
+                        </p>
+                        <div class="mb-4">
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="text-slate-600">8 sur 18 quiz complétés</span>
+                                <span class="font-medium text-slate-700">45%</span>
+                            </div>
+                            <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                                <div class="h-full bg-blue-500 hover:bg-blue-600 transition-all duration-300" style="width: 45%;"></div>
+                            </div>
+                        </div>
+                        <button class="w-full py-3 px-6 rounded-lg text-white font-medium transition-colors bg-blue-500 hover:bg-blue-600">
+                            Commencer le Quiz
+                        </button>
+                    </div>
+                </div>
+                <!-- JavaScript Journey Card -->
+                <div class="group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="aspect-w-16 aspect-h-9 relative overflow-hidden">
+                        <img src="https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1"
+                             alt="JavaScript Journey"
+                             class="w-full h-48 object-cover transform transition-transform duration-300 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 flex items-center">
+                            <div class="p-2 rounded-lg bg-yellow-500 hover:bg-yellow-600 bg-opacity-90">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                     class="lucide lucide-code2 w-6 h-6 text-white">
+                                    <path d="m18 16 4-4-4-4"></path>
+                                    <path d="m6 8-4 4 4 4"></path>
+                                    <path d="m14.5 4-5 16"></path>
+                                </svg>
+                            </div>
+                            <h3 class="ml-3 text-xl font-bold text-white">JavaScript Journey</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-slate-700 mb-4">
+                            Plongez dans le JavaScript moderne, ES6+ et la manipulation du DOM.
+                        </p>
+                        <div class="mb-4">
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="text-slate-600">6 sur 25 quiz complétés</span>
+                                <span class="font-medium text-slate-700">30%</span>
+                            </div>
+                            <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                                <div class="h-full bg-yellow-500 hover:bg-yellow-600 transition-all duration-300" style="width: 30%;"></div>
+                            </div>
+                        </div>
+                        <button class="w-full py-3 px-6 rounded-lg text-white font-medium transition-colors bg-yellow-500 hover:bg-yellow-600">
+                            Commencer le Quiz
+                        </button>
+                    </div>
+                </div>
+                <!-- React Mastery Card -->
+                <div class="group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="aspect-w-16 aspect-h-9 relative overflow-hidden">
+                        <img src="https://images.pexels.com/photos/11035471/pexels-photo-11035471.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1"
+                             alt="React Mastery"
+                             class="w-full h-48 object-cover transform transition-transform duration-300 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 flex items-center">
+                            <div class="p-2 rounded-lg bg-cyan-500 hover:bg-cyan-600 bg-opacity-90">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                     class="lucide lucide-file-json w-6 h-6 text-white">
+                                    <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                    <path d="M10 12a1 1 0 0 0-1 1v1a1 1 0 0 1-1 1 1 1 0 0 1 1 1v1a1 1 0 0 0 1 1"></path>
+                                    <path d="M14 18a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1 1 1 0 0 1-1-1v-1a1 1 0 0 0-1-1"></path>
+                                </svg>
+                            </div>
+                            <h3 class="ml-3 text-xl font-bold text-white">React Mastery</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-slate-700 mb-4">
+                            Construisez des applications web modernes avec React et son écosystème.
+                        </p>
+                        <div class="mb-4">
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="text-slate-600">3 sur 22 quiz complétés</span>
+                                <span class="font-medium text-slate-700">15%</span>
+                            </div>
+                            <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                                <div class="h-full bg-cyan-500 hover:bg-cyan-600 transition-all duration-300" style="width: 15%;"></div>
+                            </div>
+                        </div>
+                        <button class="w-full py-3 px-6 rounded-lg text-white font-medium transition-colors bg-cyan-500 hover:bg-cyan-600">
+                            Commencer le Quiz
+                        </button>
+                    </div>
+                </div>
+                <!-- Bootstrap Basics Card -->
+                <div class="group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="aspect-w-16 aspect-h-9 relative overflow-hidden">
+                        <img src="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1"
+                             alt="Bootstrap Basics"
+                             class="w-full h-48 object-cover transform transition-transform duration-300 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 flex items-center">
+                            <div class="p-2 rounded-lg bg-purple-500 hover:bg-purple-600 bg-opacity-90">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                     class="lucide lucide-bot w-6 h-6 text-white">
+                                    <path d="M12 8V4H8"></path>
+                                    <rect width="16" height="12" x="4" y="8" rx="2"></rect>
+                                    <path d="M2 14h2"></path>
+                                    <path d="M20 14h2"></path>
+                                    <path d="M15 13v2"></path>
+                                    <path d="M9 13v2"></path>
+                                </svg>
+                            </div>
+                            <h3 class="ml-3 text-xl font-bold text-white">Bootstrap Basics</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-slate-700 mb-4">
+                            Apprenez à créer des sites web responsifs avec le framework Bootstrap.
+                        </p>
+                        <div class="mb-4">
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="text-slate-600">15 sur 16 quiz complétés</span>
+                                <span class="font-medium text-slate-700">80%</span>
+                            </div>
+                            <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                                <div class="h-full bg-purple-500 hover:bg-purple-600 transition-all duration-300" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                        <button class="w-full py-3 px-6 rounded-lg text-white font-medium transition-colors bg-purple-500 hover:bg-purple-600">
+                            Commencer le Quiz
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        // Get current section and progress from localStorage
+        let currentSection = localStorage.getItem('section') || 'html';
+        let jsProgress = (localStorage.getItem('jsProgress')) ? parseInt(localStorage.getItem('jsProgress')) : 0;
+        let htmlProgress = (localStorage.getItem('htmlProgress')) ? parseInt(localStorage.getItem('htmlProgress')) : 0;
+        let cssProgress = (localStorage.getItem('cssProgress')) ? parseInt(localStorage.getItem('cssProgress')) : 0;
+        let reactProgress = (localStorage.getItem('reactProgress')) ? parseInt(localStorage.getItem('reactProgress')) : 0;
+        let bootstrapProgress = (localStorage.getItem('bootstrapProgress')) ? parseInt(localStorage.getItem('bootstrapProgress')) : 0;
+
+        // Function to update section states
+        function updateSectionStates() {
+            const sections = document.querySelectorAll('.group');
+            const sectionsOrder = ['html', 'css', 'js', 'react', 'bootstrap'];
+            let currentSectionIndex = sectionsOrder.indexOf(currentSection);
+            let allSectionsCompleted = true;
+
+            sections.forEach((section, index) => {
+                const button = section.querySelector('button');
+                const progressBar = section.querySelector('.h-full');
+                const progressText = section.querySelector('.text-slate-600');
+                const progressPercent = section.querySelector('.font-medium');
+                
+                // Get section name from the title
+                const sectionName = section.querySelector('h3').textContent.toLowerCase();
+                let progress = 0;
+                let totalLessons = 10; // Total lessons per section
+                
+                // Set progress based on section
+                if (sectionName.includes('javascript')) {
+                    progress = jsProgress;
+                } else if (sectionName.includes('html')) {
+                    progress = htmlProgress;
+                } else if (sectionName.includes('css')) {
+                    progress = cssProgress;
+                } else if (sectionName.includes('react')) {
+                    progress = reactProgress;
+                } else if (sectionName.includes('bootstrap')) {
+                    progress = bootstrapProgress;
+                }
+
+                // Calculate percentage
+                const percentage = Math.round((progress / totalLessons) * 100);
+                
+                // Update progress bar and text
+                progressBar.style.width = `${percentage}%`;
+                progressText.textContent = `${progress} sur ${totalLessons} quiz complétés`;
+                progressPercent.textContent = `${percentage}%`;
+
+                // Check if all sections are completed
+                if (progress < totalLessons) {
+                    allSectionsCompleted = false;
+                }
+
+                // Update section state
+                if (index < currentSectionIndex) {
+                    // Completed sections
+                    button.classList.add('opacity-50', 'cursor-not-allowed');
+                    button.classList.add('bg-green-500', 'hover:bg-green-600');
+                    button.innerHTML = 'Terminé <i class="fa-solid fa-check"></i>';
+                } else if (index === currentSectionIndex) {
+                    // Current section
+                    button.classList.remove('opacity-50', 'cursor-not-allowed');
+                    button.onclick = () => window.location.href = 'map.html';
+                } else {
+                    // Future sections
+                    button.classList.add('opacity-50', 'cursor-not-allowed');
+                    button.onclick = null;
+                }
+            });
+
+            // If all sections are completed, show completion message and navigation buttons
+            if (allSectionsCompleted) {
+                const container = document.querySelector('.container');
+                container.innerHTML = `
+                    <div class="text-center max-w-3xl mx-auto">
+                        <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4">Félicitations !</h1>
+                        <p class="text-lg text-slate-700 mb-8">Vous avez terminé toutes les sections !</p>
+                        <div class="flex justify-center gap-4">
+                            <a href="class.html" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg transition-colors">
+                                <i class="bi bi-trophy"></i> Voir le Classement
+                            </a>
+                            <button onclick="restartQuiz()" class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg transition-colors">
+                                <i class="bi bi-arrow-repeat"></i> Recommencer
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        // Function to restart the quiz
+        function restartQuiz() {
+            // Reset all progress
+            localStorage.setItem('jsProgress', '0');
+            localStorage.setItem('htmlProgress', '0');
+            localStorage.setItem('cssProgress', '0');
+            localStorage.setItem('reactProgress', '0');
+            localStorage.setItem('bootstrapProgress', '0');
+            localStorage.setItem('section', 'html');
+            localStorage.setItem('question', '0');
+            localStorage.setItem('userAnswers', JSON.stringify([[], [], [], [], []]));
+            localStorage.setItem('score', '0');
+            localStorage.setItem('jsScore', '0');
+            localStorage.setItem('htmlScore', '0');
+            localStorage.setItem('cssScore', '0');
+            localStorage.setItem('reactScore', '0');
+            localStorage.setItem('bootstrapScore', '0');
+            localStorage.setItem('hintsUsed', '0');
+            
+            // Reload the page
+            window.location.reload();
+        }
+
+        // Call the function when page loads
+        document.addEventListener('DOMContentLoaded', updateSectionStates);
+    </script>
+</body>
+</html>
