@@ -513,6 +513,43 @@ const questionsList = [
     ],
 ]
 
+// Points calculation constants
+const POINTS_PER_CORRECT_ANSWER = 100;
+const POINTS_DEDUCTION_PER_HINT = 20;
+const POINTS_DEDUCTION_PER_INCORRECT = 30;
+const POINTS_DEDUCTION_PER_SKIP = 50;
+const TIME_BONUS_THRESHOLD = 300; // 5 minutes in seconds
+const MAX_TIME_BONUS = 500;
+
+function calculatePoints(score, hintsUsed, incorrectAnswers, skippedAnswers, timeSpent) {
+    // Base points from correct answers
+    let points = score * POINTS_PER_CORRECT_ANSWER;
+    
+    // Deduct points for hints used
+    points -= hintsUsed * POINTS_DEDUCTION_PER_HINT;
+    
+    // Deduct points for incorrect answers
+    points -= incorrectAnswers * POINTS_DEDUCTION_PER_INCORRECT;
+    
+    // Deduct points for skipped questions
+    points -= skippedAnswers * POINTS_DEDUCTION_PER_SKIP;
+    
+    // Add time bonus if completed under threshold
+    if (timeSpent < TIME_BONUS_THRESHOLD) {
+        const timeBonus = Math.floor((TIME_BONUS_THRESHOLD - timeSpent) / TIME_BONUS_THRESHOLD * MAX_TIME_BONUS);
+        points += timeBonus;
+    }
+    
+    // Ensure points don't go below 0
+    return Math.max(0, Math.floor(points));
+}
+
+function formatTime(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
+}
+
 function calcScore(){
     let score = localStorage.getItem('score') ? parseFloat(localStorage.getItem('score')) : 0;
     score = (!score)?0:score;
@@ -524,12 +561,41 @@ function calcScore(){
     let bootstrapScore = localStorage.getItem('bootstrapScore') ? parseFloat(localStorage.getItem('bootstrapScore')) : 0;
     score = (jsScore + htmlScore + cssScore + reactScore + bootstrapScore) / 5;
     score = (0 > score || score >10)?0:score
-    document.getElementById('score').innerText = `${score.toFixed(1)}/10`
-    document.getElementById('jsTxt').innerText = `${jsScore.toFixed(1)}/10`
+
+    // Get time spent from localStorage
+    const timeSpent = localStorage.getItem('fullTime') ? parseInt(localStorage.getItem('fullTime')) : 0;
+    localStorage.setItem('lastQuizTime', timeSpent);
+
+    // Calculate total correct, incorrect, and skipped answers
+    let userAnswers = localStorage.getItem('userAnswers') ? JSON.parse(localStorage.getItem('userAnswers')) : [[], [], [], [], []];
+    let totalCorrect = 0;
+    let totalIncorrect = 0;
+    let totalSkipped = 0;
+    let hintsUsed = localStorage.getItem('hintsUsed') ? parseInt(localStorage.getItem('hintsUsed')) : 0;
+
+    // Calculate points
+    const points = calculatePoints(score * 10, hintsUsed, totalIncorrect, totalSkipped, timeSpent);
+    localStorage.setItem('lastQuizPoints', points);
+
+    // Update UI elements
+    document.getElementById('score').innerText = `${score.toFixed(1)}/10`;
+    document.getElementById('jsTxt').innerText = `${jsScore.toFixed(1)}/10`;
     document.getElementById('htmlTxt').innerText = `${htmlScore.toFixed(1)}/10`;
     document.getElementById('cssTxt').innerText = `${cssScore.toFixed(1)}/10`;
     document.getElementById('reactTxt').innerText = `${reactScore.toFixed(1)}/10`;
     document.getElementById('bootstrapTxt').innerText = `${bootstrapScore.toFixed(1)}/10`;
+
+    // Update time and points display
+    const timeElement = document.getElementById('totalTime');
+    if (timeElement) {
+        timeElement.innerHTML = `${formatTime(timeSpent)} <i class="bi bi-clock-fill"></i>`;
+    }
+
+    const pointsElement = document.getElementById('totalPoints');
+    if (pointsElement) {
+        pointsElement.innerHTML = `${points} <i class="bi bi-star-fill"></i>`;
+    }
+
     let prg = document.getElementById('prg');
     document.getElementById('jsSc').setAttribute('stroke-dasharray', `${jsScore * 10}, 100`)
     document.getElementById('htmlSc').setAttribute('stroke-dasharray', `${htmlScore * 10}, 100`)
@@ -537,13 +603,7 @@ function calcScore(){
     document.getElementById('reactSc').setAttribute('stroke-dasharray', `${reactScore * 10}, 100`)
     document.getElementById('bootstrapSc').setAttribute('stroke-dasharray', `${bootstrapScore * 10}, 100`)
 
-    // Calculate total correct, incorrect, and skipped answers
-    let userAnswers = localStorage.getItem('userAnswers') ? JSON.parse(localStorage.getItem('userAnswers')) : [[], [], [], [], []];
-    let totalCorrect = 0;
-    let totalIncorrect = 0;
-    let totalSkipped = 0;
     // Show number of hints used
-    let hintsUsed = localStorage.getItem('hintsUsed') ? parseInt(localStorage.getItem('hintsUsed')) : 0;
     let hintsElem = document.querySelector('.bg-yellow-500 p');
     if (hintsElem) hintsElem.innerHTML = `${hintsUsed} <i class="bi bi-lightbulb-fill"></i>`;
     for (let i = 0; i < 5; i++) {

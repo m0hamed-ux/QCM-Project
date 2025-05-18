@@ -16,15 +16,16 @@
     
 </head>
 <body onload="createMap()">
-    <header class="px-2 overflow-hidden sm:px-10 py-2 w-full  border-slate-400 flex justify-between" id="header">
-        <ul class="hidden sm:flex flex-1 justify-start gap-2 text-gray-600">
-            <li ><a href="../index.html">Accueil</a></li>
-            <li ><a href="#" class="text-black active">Commencer</a></li>
-            <li ><a href="class.html">Classement</a></li>
+    <header class="px-2 overflow-hidden sm:px-10 py-2 w-full border-slate-400 flex justify-between items-center" id="header">
+        <div class=" text-start logo h-5" id="top-logo">MyQuiz</div>
+        <ul class="hidden sm:flex  justify-start gap-2 text-gray-600">
+            <li class=""><a href="../index.html">Accueil</a></li>
+            <li class=""><a href="class.html">Classement</a></li>
+            <li class=""><a href="../index#about">À&nbsp;propos</a></li>
+            <li class=""><a href="../index#features">Fonctionnalités</a></li>
         </ul>
-        <div class=" flex-1 text-center logo h-5 overflow-hidden" id="top-logo">MyQuiz</div>
-        <ul class="hidden sm:flex justify-end flex-1 gap-2 text-gray-600" id="pointes">
-            <li >MyProfile</li>
+        <ul class="">
+            <li class=""><button onclick="window.location.href='commencer.html'" class="bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition-colors">Commencer</button></li>
         </ul>
     </header>
     <section class="py-16 md:py-24">
@@ -318,10 +319,10 @@
                         <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4">Félicitations !</h1>
                         <p class="text-lg text-slate-700 mb-8">Vous avez terminé toutes les sections !</p>
                         <div class="flex justify-center gap-4">
-                            <a href="class.html" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg transition-colors">
+                            <a href="class.html" class="bg-blue-500 w-50 border-b-4 border-blue-600 px-4 text-white cursor-pointer py-2 mt-2 mx-1 rounded-md">
                                 <i class="bi bi-trophy"></i> Voir le Classement
                             </a>
-                            <button onclick="restartQuiz()" class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg transition-colors">
+                            <button onclick="restartQuiz()" class="bg-green-500 w-50 border-b-4 border-green-700 px-4 text-white cursor-pointer py-2 mt-2 mx-1 rounded-md">
                                 <i class="bi bi-arrow-repeat"></i> Recommencer
                             </button>
                         </div>

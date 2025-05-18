@@ -17,15 +17,16 @@
     <script src="../src/scripts/animations/anime-map.js"></script>
 </head>
 <body onload="createMap()">
-    <header class="px-2 overflow-hidden sm:px-10 py-2 w-full  border-slate-400 flex justify-between" id="header">
-        <ul class="hidden sm:flex flex-1 justify-start gap-2 text-gray-600">
-            <li class="-translate-y-14"><a href="../index.html">Accueil</a></li>
-            <li class="-translate-y-14"><a href="../quizes/commencer.html" class="text-black active">Commencer</a></li>
-            <li class="-translate-y-14"><a href="">Classement</a></li>
+    <header class="px-2 overflow-hidden sm:px-10 py-2 w-full border-slate-400 flex justify-between items-center" id="header">
+        <div class="text-start logo h-5" id="top-logo">MyQuiz</div>
+        <ul class="hidden sm:flex justify-start gap-2 text-gray-600">
+            <li class=""><a href="../index.html">Accueil</a></li>
+            <li class=""><a href="class.html">Classement</a></li>
+            <li class=""><a href="../index.html#about">À&nbsp;propos</a></li>
+            <li class=""><a href="../index.html#features">Fonctionnalités</a></li>
         </ul>
-        <div class=" flex-1 text-center logo h-5 overflow-hidden opacity-0" id="top-logo">MyQuiz</div>
-        <ul class="hidden sm:flex justify-end flex-1 gap-2 text-gray-600" id="pointes">
-            <li class="-translate-y-16">MyProfile</li>
+        <ul class="">
+            <li class=""><button onclick="window.location.href='commencer.html'" class="bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition-colors">Commencer</button></li>
         </ul>
     </header>
     <div class="flex w-max h-20  shadow-[0_0.3em_0]  mx-auto rounded-lg mt-5 sticky top-2 z-20" id="title-box">

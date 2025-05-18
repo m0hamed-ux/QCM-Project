@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classement - MyQuiz</title>
+    <link rel="stylesheet" href="../src/styles/style.css">
+    <link rel="stylesheet" href="../src/styles/map.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/db9d9c8d3d.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <header class="px-2 overflow-hidden sm:px-10 py-2 w-full border-slate-400 flex justify-between items-center" id="header">
+        <div class="text-start logo h-5" id="top-logo">MyQuiz</div>
+        <ul class="hidden sm:flex justify-start gap-2 text-gray-600">
+            <li class=""><a href="../index.html">Accueil</a></li>
+            <li class=""><a href="#" class="text-black active">Classement</a></li>
+            <li class=""><a href="../index.html#about">À&nbsp;propos</a></li>
+            <li class=""><a href="../index.html#features">Fonctionnalités</a></li>
+        </ul>
+        <ul class="">
+            <li class=""><button onclick="window.location.href='commencer.html'" class="bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition-colors">Commencer</button></li>
+        </ul>
+    </header>
+
+    <div class="min-h-screen text-gray-800">
+        <div class="container mx-auto px-4 py-8 max-w-6xl">
+            <!-- Div for users who haven't completed a quiz -->
+            <div id="no-quiz-message" class="hidden text-center py-16">
+                <img src="https://em-content.zobj.net/source/telegram/386/man-technologist_1f468-200d-1f4bb.webp" class="w-40 h-40 mx-auto" alt="">
+                <h2 class="text-3xl font-bold mb-4 text-gray-800">Vous n'avez pas encore complété de quiz</h2>
+                <p class="text-gray-600 mb-8">Commencez votre premier quiz pour apparaître dans le classement !</p>
+                <a href="commencer.html" class="inline-block bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-8 py-3 rounded-lg font-semibold hover:from-indigo-600 hover:to-purple-600 transition-all duration-300 shadow-lg hover:shadow-xl">
+                    Commencer le Quiz
+                </a>
+            </div>
+
+            
+            <div id="leaderboard-content">
+                <h1 class="text-3xl md:text-4xl font-bold mb-2 text-center text-black">Classement des Champions du Quiz</h1>
+                <p class="text-center text-gray-600 mb-28">Découvrez votre classement par rapport aux autres participants</p>
+                
+                <!-- Section Top 3 Joueurs -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+                    <div class="lg:col-span-3">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="top-players">
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden mb-8 border border-gray-200">
+                    <div class="bg-gradient-to-r from-indigo-500 to-purple-500 px-4 py-3 flex flex-col sm:flex-row justify-between items-center sticky top-0 z-10">
+                        <div class="text-xl font-bold mb-2 sm:mb-0 text-white">Classement</div>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="text-xs uppercase bg-gray-100 text-gray-600 border-b border-gray-200">
+                                <tr class="">
+                                    <th class="py-3 px-4 sm:px-6 text-left w-16">Rang</th>
+                                    <th class="py-3 px-2 sm:px-6 text-left">Utilisateur</th>
+                                    <th class="py-3 px-2 sm:px-6 text-right">Points</th>
+                                    <th class="py-3 px-2 sm:px-6 text-right md:table-cell">Score</th>
+                                    <th class="py-3 px-2 sm:px-6 text-right lg:table-cell">Temps</th>
+                                    <th class="py-3 px-2 sm:px-6 text-right lg:table-cell">Dernier Quiz</th>
+                                </tr>
+                            </thead>
+                            <tbody id="leaderboard-body">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../src/js/leaderboard.js"></script>
+</body>
+</html>

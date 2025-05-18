@@ -550,6 +550,10 @@ function startTimer() {
             clearInterval(timer);
             fullTime += 15; // Add full time when timer ends
             localStorage.setItem('fullTime', fullTime);
+            document.getElementById('slow').style.display = 'block'
+            setTimeout(() => {
+                document.getElementById('slow').style.display = 'none';
+            }, 4000);
             skip();
         }
     }, 1000);

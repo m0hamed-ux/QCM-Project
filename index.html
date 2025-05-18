@@ -62,20 +62,17 @@
     <title>MyQuiz</title>
 </head>
 <body class="h-screen index">
-    <header class="px-2 overflow-hidden sm:px-10 py-2 w-full border-slate-400 flex justify-between" id="header">
-        <ul class="hidden sm:flex flex-1 justify-start gap-2 text-gray-600">
+    <header class="px-2 overflow-hidden sm:px-10 py-2 w-full border-slate-400 flex justify-between items-center" id="header">
+        <div class=" text-start logo h-5 overflow-hidden opacity-0" id="top-logo">MyQuiz</div>
+        <ul class="hidden sm:flex  justify-start gap-2 text-gray-600">
             <li class="-translate-y-14"><a href="#" class="text-black active">Accueil</a></li>
-            <li class="-translate-y-14"><a href="quizes/commencer.html">Commencer</a></li>
-            <li class="-translate-y-14"><a href="">Classement</a></li>
+            <li class="-translate-y-14"><a href="quizes/class.html">Classement</a></li>
+            <li class="-translate-y-14"><a href="#about">À&nbsp;propos</a></li>
+            <li class="-translate-y-14"><a href="#features">Fonctionnalités</a></li>
         </ul>
-        <div class="flex-1 text-center logo h-5 overflow-hidden opacity-0" id="top-logo">MyQuiz</div>
-        <ul class="hidden sm:flex justify-end flex-1 gap-2 text-gray-600" id="pointes">
-             
-            <li class="-translate-y-16">MyProfile</li>
+        <ul class="">
+            <li class="-translate-y-14"><button onclick="window.location.href='quizes/commencer.html'" class="bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition-colors">Commencer</button></li>
         </ul>
-        <div class="w-72 h-92 z-20 hidden bg-red-500 rounded right-4 top-8 absolute">
-
-        </div>
     </header>
     <main>
         <div id="logo-box" class="bg-white w-full h-screen flex justify-center items-center overflow-hidden">
@@ -103,7 +100,7 @@
                 </div>
             </div>
         </section>
-        <div class="container mx-auto px-4 md:px-6">
+        <div id="about" class="container mx-auto px-4 md:px-6">
             <div class="text-center max-w-3xl mx-auto mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">À propos de notre quiz Front-End</h2>
                 <p class="text-lg text-slate-700">Notre plateforme de quiz complète est conçue pour tester et améliorer vos compétences en développement front-end grâce à des questions et des défis interactifs.</p>
@@ -386,7 +383,7 @@
                 </div>
             </div>
         </section>
-        <section class="py-16 md:py-20 bg-gradient-to-br from-blue-50 to-indigo-50">
+        <section id="Abonnez-vous" class="py-16 md:py-20 bg-gradient-to-br from-blue-50 to-indigo-50">
             <div class="container mx-auto px-4 md:px-6">
                 <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-sm p-8 md:p-10">
                     <div class="text-center mb-8">
