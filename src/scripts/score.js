@@ -531,11 +531,11 @@ function calcScore(){
     document.getElementById('reactTxt').innerText = `${reactScore.toFixed(1)}/10`;
     document.getElementById('bootstrapTxt').innerText = `${bootstrapScore.toFixed(1)}/10`;
     let prg = document.getElementById('prg');
-    document.getElementById('jsSc').setAttribute('stroke-dasharray', `${jsScore}, 100`)
-    document.getElementById('htmlSc').setAttribute('stroke-dasharray', `${htmlScore}, 100`)
-    document.getElementById('cssSc').setAttribute('stroke-dasharray', `${cssScore}, 100`)
-    document.getElementById('reactSc').setAttribute('stroke-dasharray', `${reactScore}, 100`)
-    document.getElementById('bootstrapSc').setAttribute('stroke-dasharray', `${bootstrapScore}, 100`)
+    document.getElementById('jsSc').setAttribute('stroke-dasharray', `${jsScore * 10}, 100`)
+    document.getElementById('htmlSc').setAttribute('stroke-dasharray', `${htmlScore * 10}, 100`)
+    document.getElementById('cssSc').setAttribute('stroke-dasharray', `${cssScore * 10}, 100`)
+    document.getElementById('reactSc').setAttribute('stroke-dasharray', `${reactScore * 10}, 100`)
+    document.getElementById('bootstrapSc').setAttribute('stroke-dasharray', `${bootstrapScore * 10}, 100`)
 
     // Calculate total correct, incorrect, and skipped answers
     let userAnswers = localStorage.getItem('userAnswers') ? JSON.parse(localStorage.getItem('userAnswers')) : [[], [], [], [], []];

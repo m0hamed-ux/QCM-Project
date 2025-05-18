@@ -333,22 +333,7 @@
         // Function to restart the quiz
         function restartQuiz() {
             // Reset all progress
-            localStorage.setItem('jsProgress', '0');
-            localStorage.setItem('htmlProgress', '0');
-            localStorage.setItem('cssProgress', '0');
-            localStorage.setItem('reactProgress', '0');
-            localStorage.setItem('bootstrapProgress', '0');
-            localStorage.setItem('section', 'html');
-            localStorage.setItem('question', '0');
-            localStorage.setItem('userAnswers', JSON.stringify([[], [], [], [], []]));
-            localStorage.setItem('score', '0');
-            localStorage.setItem('jsScore', '0');
-            localStorage.setItem('htmlScore', '0');
-            localStorage.setItem('cssScore', '0');
-            localStorage.setItem('reactScore', '0');
-            localStorage.setItem('bootstrapScore', '0');
-            localStorage.setItem('hintsUsed', '0');
-            
+            localStorage.clear();
             // Reload the page
             window.location.reload();
         }

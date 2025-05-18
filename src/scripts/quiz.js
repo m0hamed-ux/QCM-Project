@@ -524,6 +524,37 @@ let sections = ['html', 'css', 'js', 'react', 'bootstrap'];
 // Ensure userAnswers has 5 arrays (one for each section)
 while (userAnswers.length < 5) userAnswers.push([]);
 
+// Points system
+let points = parseInt(localStorage.getItem('points') || '50');
+
+function updatePointsDisplay() {
+    document.getElementById('points').textContent = points;
+}
+
+// Timer variables
+let timer;
+let timeLeft = 15;
+let fullTime = parseInt(localStorage.getItem('fullTime') || '0');
+
+function startTimer() {
+    timeLeft = 15;
+    document.getElementById('timer').textContent = timeLeft;
+    
+    if (timer) clearInterval(timer);
+    
+    timer = setInterval(() => {
+        timeLeft--;
+        document.getElementById('timer').textContent = timeLeft;
+        
+        if (timeLeft <= 0) {
+            clearInterval(timer);
+            fullTime += 15; // Add full time when timer ends
+            localStorage.setItem('fullTime', fullTime);
+            skip();
+        }
+    }, 1000);
+}
+
 function loadData() {
     // Accept new sections in validation
     if (
@@ -572,7 +603,9 @@ function loadData() {
     } else {
         // fallback, should not happen due to validation above
     }
+    updatePointsDisplay(); // Update points display when quiz loads
     refresh();
+    startTimer();
 }
 
 function refresh() {
@@ -636,7 +669,13 @@ function refresh() {
             elt.checked = false;
         }
     }
+    startTimer(); // Start timer for new question
 }
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        nextQuestion();
+    }
+});
 
 function nextQuestion() {
     let chk = null;
@@ -647,6 +686,10 @@ function nextQuestion() {
         }
     }
     if (chk) {
+        // Add remaining time to fullTime
+        fullTime += (15 - timeLeft);
+        localStorage.setItem('fullTime', fullTime);
+        
         if (Qnum < 10) {
             Qnum++;
             localStorage.setItem(sectionData, Qnum);
@@ -658,7 +701,6 @@ function nextQuestion() {
             userAnswers[sectionIndex].push(chk.value);
             localStorage.setItem('userAnswers', JSON.stringify(userAnswers));
             refresh();
-            // If last section, show result, else go to next section
             if (section === 'bootstrap') {
                 result();
             } else {
@@ -674,6 +716,10 @@ function nextQuestion() {
 }
 
 function skip() {
+    // Add remaining time to fullTime
+    fullTime += (15 - timeLeft);
+    localStorage.setItem('fullTime', fullTime);
+    
     if (Qnum < 10) {
         Qnum++;
         localStorage.setItem(sectionData, Qnum);
@@ -722,14 +768,29 @@ function result() {
 }
 
 function showHint() {
-    document.getElementById('hintText').innerText = questionsList[sectionIndex][Qnum - 1].hint;
-    let rect = document.getElementById('hintButton').getBoundingClientRect();
-    document.getElementById('hintBox').style.top = `${rect.bottom + window.scrollY + 10}px`;
-    document.getElementById('hintBox').classList.remove('hidden');
-    // Save the number of hints used in localStorage
-    let hintsUsed = localStorage.getItem('hintsUsed') ? parseInt(localStorage.getItem('hintsUsed')) : 0;
-    hintsUsed += 1;
-    localStorage.setItem('hintsUsed', hintsUsed);
+    if (points >= 10) {
+        points -= 10;
+        localStorage.setItem('points', points);
+        updatePointsDisplay();
+        
+        document.getElementById('hintText').innerText = questionsList[sectionIndex][Qnum - 1].hint;
+        let rect = document.getElementById('hintButton').getBoundingClientRect();
+        document.getElementById('hintBox').style.top = `${rect.bottom + window.scrollY + 10}px`;
+        document.getElementById('hintBox').classList.remove('hidden');
+        let hintsUsed = parseInt(localStorage.getItem('hintsUsed') || '0');
+        hintsUsed++;
+        localStorage.setItem('hintsUsed', hintsUsed);
+    } else {
+        const pointsDiv = document.getElementById('pointsDiv');
+        pointsDiv.style.color = 'red';
+        pointsDiv.style.background = '#ffe2e2';
+        pointsDiv.style.transition = 'color 0.5s ease';
+        
+        setTimeout(() => {
+            pointsDiv.style.color = ''; 
+            pointsDiv.style.background = ''; 
+        }, 500);
+    }
 }
 function closeHint() {
     document.getElementById('hintBox').classList.add('hidden');

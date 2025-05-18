@@ -1,6 +1,7 @@
 let question = localStorage.getItem('question') || 1;
 let section = localStorage.getItem('section') || 'html';
 
+
 question = (!question)?1:question
 section = (!section)?'html':section
 let sections = ['html', 'css', 'js', 'react', 'bootstrap']
@@ -111,6 +112,17 @@ function createMap(){
             window.location.href = `quiz.html`;
         }
     });
+    function isAllSectionsCompleted() {
+        return jsProgress >= 10 && 
+               htmlProgress >= 10 && 
+               cssProgress >= 10 && 
+               reactProgress >= 10 && 
+               bootstrapProgress >= 10;
+    }
+    if(isAllSectionsCompleted()){
+        window.location.href = `commencer.html`;
+    }
+    
 }
 $(document).ready(function() {
     
