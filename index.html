@@ -57,6 +57,20 @@
             position: static;
             display: inline-block;
         }
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        .animate-scroll {
+            animation: scroll 5s linear infinite;
+        }
+        .animate-scroll:hover {
+            animation-play-state: paused;
+        }
     </style>
     
     <title>MyQuiz</title>
@@ -69,6 +83,7 @@
             <li class="-translate-y-14"><a href="quizes/class.html">Classement</a></li>
             <li class="-translate-y-14"><a href="#about">À&nbsp;propos</a></li>
             <li class="-translate-y-14"><a href="#features">Fonctionnalités</a></li>
+            <li class="-translate-y-14"><a href="quizes/profile.html">Mon&nbsp;Profile</a></li>
         </ul>
         <ul class="">
             <li class="-translate-y-14"><button onclick="window.location.href='quizes/commencer.html'" class="bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition-colors">Commencer</button></li>
@@ -95,7 +110,7 @@
                         <a href="quizes/commencer.html" class="font-bold flex justify-center items-center gap-2">Commencer mon test <i class="fa-solid fa-arrow-right ml-2"></i></a>
                     </div>
                     <div class="text-center border-white border-2 w-44 scale-0 text-white py-3 px-5 rounded-full cursor-pointer hover:text-black transition-[background-color] btn" id="voir-plus">
-                        <a href="#plus" class="w-full text-center">Voir plus</a>
+                        <a href="#about" class="w-full text-center">Voir plus</a>
                     </div>
                 </div>
             </div>
@@ -127,11 +142,11 @@
                 <div class="bg-slate-50 p-6 rounded-xl border border-slate-100 hover:shadow-md transition-shadow">
                     <div class="flex items-center mb-4">
                         <div class="bg-purple-100 p-3 rounded-lg">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-award w-6 h-6 text-purple-600"><circle cx="12" cy="8" r="6"></circle><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users w-6 h-6 text-purple-600"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                         </div>
-                        <h3 class="ml-4 text-xl font-semibold text-slate-800">Certification de compétences</h3>
+                        <h3 class="ml-4 text-xl font-semibold text-slate-800">Classement en temps réel</h3>
                     </div>
-                    <p class="text-slate-600">Obtenez des certificats en complétant des modules de quiz pour valoriser votre expertise en développement front-end auprès des employeurs.</p>
+                    <p class="text-slate-600">Comparez vos performances avec d'autres développeurs grâce à notre système de classement en temps réel et motivez-vous à progresser.</p>
                 </div>
                 <div class="bg-slate-50 p-6 rounded-xl border border-slate-100 hover:shadow-md transition-shadow">
                     <div class="flex items-center mb-4">
@@ -141,6 +156,71 @@
                         <h3 class="ml-4 text-xl font-semibold text-slate-800">Suivi de progression</h3>
                     </div>
                     <p class="text-slate-600">Suivez votre amélioration au fil du temps grâce à des analyses détaillées et des indicateurs de performance pour chaque tentative de quiz.</p>
+                </div>
+            </div>
+        </div>
+        <div class="overflow-hidden bg-slate-900 py-4">
+            <div class="animate-scroll flex whitespace-nowrap">
+                <div class="flex items-center space-x-8 text-white text-xl font-bold">
+                    <span>HTML</span>
+                    <span>•</span>
+                    <span>CSS</span>
+                    <span>•</span>
+                    <span>JavaScript</span>
+                    <span>•</span>
+                    <span>React</span>
+                    <span>•</span>
+                    <span>Bootstrap</span>
+                    <span>•</span>
+                    <span>HTML</span>
+                    <span>•</span>
+                    <span>CSS</span>
+                    <span>•</span>
+                    <span>JavaScript</span>
+                    <span>•</span>
+                    <span>React</span>
+                    <span>•</span>
+                    <span>Bootstrap</span>
+                    <span>HTML</span>
+                    <span>•</span>
+                    <span>CSS</span>
+                    <span>•</span>
+                    <span>JavaScript</span>
+                    <span>•</span>
+                    <span>React</span>
+                    <span>•</span>
+                    <span>Bootstrap</span>
+                    <span>•</span>
+                    <span>HTML</span>
+                    <span>•</span>
+                    <span>CSS</span>
+                    <span>•</span>
+                    <span>JavaScript</span>
+                    <span>•</span>
+                    <span>React</span>
+                    <span>•</span>
+                    <span>Bootstrap</span>
+                </div>
+                <div class="flex items-center space-x-8 text-white text-xl font-bold">
+                    <span>HTML</span>
+                    <span>•</span>
+                    <span>CSS</span>
+                    <span>•</span>
+                    <span>JavaScript</span>
+                    <span>•</span>
+                    <span>React</span>
+                    <span>•</span>
+                    <span>Bootstrap</span>
+                    <span>•</span>
+                    <span>HTML</span>
+                    <span>•</span>
+                    <span>CSS</span>
+                    <span>•</span>
+                    <span>JavaScript</span>
+                    <span>•</span>
+                    <span>React</span>
+                    <span>•</span>
+                    <span>Bootstrap</span>
                 </div>
             </div>
         </div>
@@ -373,6 +453,140 @@
                                 <span class="text-slate-700">Recommandations d'apprentissage</span>
                             </li>
                         </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 md:px-6">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+                        Ce que disent nos utilisateurs
+                    </h2>
+                    <p class="text-lg text-slate-700">
+                        Découvrez les expériences de nos utilisateurs qui ont amélioré leurs compétences en développement front-end avec MyQuiz.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-100 hover:shadow-md transition-shadow">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
+                                <span class="text-blue-600 font-bold text-lg">SA</span>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-semibold text-slate-800">Sarah A*****</h3>
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-slate-600">
+                            "MyQuiz m'a aidé à maîtriser React en seulement quelques semaines. Les quiz sont bien structurés et les explications sont claires. Je recommande vivement !"
+                        </p>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-100 hover:shadow-md transition-shadow">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center">
+                                <span class="text-purple-600 font-bold text-lg">AK</span>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-semibold text-slate-800">Ali K********</h3>
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-slate-600">
+                            "La plateforme est intuitive et les défis sont stimulants. J'ai particulièrement apprécié les exercices pratiques qui m'ont permis d'appliquer mes connaissances."
+                        </p>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-100 hover:shadow-md transition-shadow">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
+                                <span class="text-green-600 font-bold text-lg">LA</span>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-semibold text-slate-800">Lina A********</h3>
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-slate-600">
+                            "Les quiz sont parfaits pour les débutants comme moi. J'ai pu apprendre à mon rythme et suivre ma progression. Un excellent outil d'apprentissage !"
+                        </p>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-100 hover:shadow-md transition-shadow">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center">
+                                <span class="text-orange-600 font-bold text-lg">YB</span>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-semibold text-slate-800">Youssef B********</h3>
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-slate-600">
+                            "Le système de classement est très motivant. J'adore me mesurer aux autres développeurs et voir mes progrès au fil du temps."
+                        </p>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-100 hover:shadow-md transition-shadow">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center">
+                                <span class="text-red-600 font-bold text-lg">NA</span>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-semibold text-slate-800">Nadia A********</h3>
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-slate-600">
+                            "Les explications détaillées après chaque question m'ont beaucoup aidée à comprendre mes erreurs. C'est un excellent outil d'apprentissage."
+                        </p>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-100 hover:shadow-md transition-shadow">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-teal-100 flex items-center justify-center">
+                                <span class="text-teal-600 font-bold text-lg">RK</span>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-semibold text-slate-800">Rachid K********</h3>
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-slate-600">
+                            "La variété des questions et la qualité du contenu sont impressionnantes. C'est devenu mon outil préféré pour réviser mes connaissances en front-end."
+                        </p>
                     </div>
                 </div>
             </div>

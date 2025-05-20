@@ -23,6 +23,7 @@
             <li class=""><a href="class.html">Classement</a></li>
             <li class=""><a href="../index#about">À&nbsp;propos</a></li>
             <li class=""><a href="../index#features">Fonctionnalités</a></li>
+            <li class=""><a href="profile.html">Mon&nbsp;Profile</a></li>
         </ul>
         <ul class="">
             <li class=""><button onclick="window.location.href='commencer.html'" class="bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition-colors">Commencer</button></li>
@@ -280,7 +281,7 @@
                 const percentage = Math.round((progress / totalLessons) * 100);
                 
                 progressBar.style.width = `${percentage}%`;
-                progressText.textContent = `${progress} sur ${totalLessons} quiz complétés`;
+                progressText.textContent = `${progress} sur ${totalLessons} questions complétés`;
                 progressPercent.textContent = `${percentage}%`;
 
                 if (progress < totalLessons) {
@@ -291,12 +292,15 @@
                     button.classList.add('opacity-50', 'cursor-not-allowed');
                     button.classList.add('bg-green-500', 'hover:bg-green-600');
                     button.innerHTML = 'Terminé <i class="fa-solid fa-check"></i>';
+                    button.parentNode.parentNode.style.border = 'solid #53d353d4 1px '
                 } else if (index === currentSectionIndex) {
                     button.classList.remove('opacity-50', 'cursor-not-allowed');
                     button.onclick = () => window.location.href = 'map.html';
                 } else {
                     button.classList.add('opacity-50', 'cursor-not-allowed');
                     button.onclick = null;
+                    button.innerHTML = '<i class="fa-solid fa-lock"></i>';
+                    button.parentNode.style.opacity = "0.5"
                 }
             });
 

@@ -511,12 +511,11 @@ const questionsList = [
     ],
 ]
 
-// Points calculation constants
 const POINTS_PER_CORRECT_ANSWER = 100;
 const POINTS_DEDUCTION_PER_HINT = 20;
 const POINTS_DEDUCTION_PER_INCORRECT = 30;
 const POINTS_DEDUCTION_PER_SKIP = 50;
-const TIME_BONUS_THRESHOLD = 300; // 5 minutes in seconds
+const TIME_BONUS_THRESHOLD = 300; 
 const MAX_TIME_BONUS = 500;
 
 function calculatePoints(score, hintsUsed, incorrectAnswers, skippedAnswers, timeSpent) {

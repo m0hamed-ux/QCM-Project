@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Profile - MyQuiz</title>
+    <link rel="stylesheet" href="../src/styles/style.css">
+    <link rel="stylesheet" href="../src/styles/map.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/db9d9c8d3d.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <header class="px-2overflow-hidden sm:px-10 py-2 w-full border-slate-400 flex justify-between items-center" id="header">
+        <div class="text-start logo h-5" id="top-logo">MyQuiz</div>
+        <ul class="hidden sm:flex justify-start gap-2 text-gray-600">
+            <li class=""><a href="../index.html">Accueil</a></li>
+            <li class=""><a href="class.html">Classement</a></li>
+            <li class=""><a href="../index#about">À&nbsp;propos</a></li>
+            <li class=""><a href="../index#features">Fonctionnalités</a></li>
+            <li class=""><a class="text-black active" href="#">Mon&nbsp;Profile</a></li>
+        </ul>
+        <ul class="">
+            <li class=""><button onclick="window.location.href='commencer.html'" class="bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition-colors">Commencer</button></li>
+        </ul>
+    </header>
+
+    <main class="container mx-auto px-4 py-8 max-w-6xl">
+        <!-- Profile Header -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-8">
+            <div class="relative h-48 bg-gradient-to-r from-indigo-500 to-purple-500">
+                <div class="absolute -bottom-16 left-8">
+                    <div class="w-32 h-32 rounded-full border-4 border-white overflow-hidden bg-white">
+                        <img id="profile-avatar" src="https://i.pravatar.cc/150?img=11" alt="Profile" class="w-full h-full object-cover">
+                    </div>
+                    <div id="rank" class="absolute top-[70%] bg-red-500 w-7 h-7 rounded-full right-[2%] flex text-white font-bold text-xs justify-center items-center border-3 border-white "></div>
+                </div>
+            </div>
+            <div class="pt-20 pb-8 px-8">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h1 id="profile-username" class="text-3xl font-bold text-gray-800">Chargement...</h1>
+                        <p class="text-gray-600 mt-1">Membre depuis <span id="join-date">2024</span></p>
+                    </div>
+                    <div class="flex gap-3">
+                        <button onclick="if(confirm('vous etes sur?'))localStorage.clear(); window.location.reload();" class="bg-red-100 hover:bg-red-200 text-red-700 px-4 py-2 rounded-lg transition-colors flex items-center gap-2">
+                            <i class="bi bi-trash"></i>
+                            Réinitialiser
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Section -->
+        <div class="grid grid-cols-1 gap-8 mb-8 relative">
+            <!-- Stats Overview -->
+            <div class="bg-white rounded-xl shadow-lg p-6 relative">
+                <div class="quiz-required-overlay hidden">
+                    <div class="absolute inset-0 bg-white/80 backdrop-blur-sm flex items-center justify-center rounded-xl">
+                        <p class="text-gray-600 font-medium">Complétez le quiz d'abord</p>
+                    </div>
+                </div>
+                <h2 class="text-xl font-bold text-gray-800 mb-4">Statistiques</h2>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <div class="text-2xl font-bold text-indigo-600" id="total-score">0</div>
+                        <div class="text-sm text-gray-600">Score Total</div>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <div class="text-2xl font-bold text-indigo-600" id="user-rank">#0</div>
+                        <div class="text-sm text-gray-600">Rang</div>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <div class="text-2xl font-bold text-indigo-600" id="total-time">0h</div>
+                        <div class="text-sm text-gray-600">Temps Total</div>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <div class="text-2xl font-bold text-indigo-600" id="total-points">0</div>
+                        <div class="text-sm text-gray-600">Points</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skills Progress -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-8 relative">
+            <div class="quiz-required-overlay hidden">
+                <div class="absolute inset-0 bg-white/80 backdrop-blur-sm flex items-center justify-center rounded-xl">
+                    <p class="text-gray-600 font-medium">Complétez le quiz d'abord</p>
+                </div>
+            </div>
+            <h2 class="text-xl font-bold text-gray-800 mb-6">Progression par Compétence</h2>
+            <div class="space-y-4">
+                <!-- JavaScript -->
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-lg bg-yellow-100 flex items-center justify-center">
+                        <i class="fab fa-js text-yellow-500 text-2xl"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-sm font-medium text-gray-700">JavaScript</span>
+                            <span class="text-sm font-medium text-gray-700" id="js-score">0/10</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div id="js-progress" class="bg-yellow-500 h-2 rounded-full transition-all duration-500" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HTML -->
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-lg bg-orange-100 flex items-center justify-center">
+                        <i class="fab fa-html5 text-orange-500 text-2xl"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-sm font-medium text-gray-700">HTML</span>
+                            <span class="text-sm font-medium text-gray-700" id="html-score">0/10</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div id="html-progress" class="bg-orange-500 h-2 rounded-full transition-all duration-500" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CSS -->
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center">
+                        <i class="fab fa-css3-alt text-blue-500 text-2xl"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-sm font-medium text-gray-700">CSS</span>
+                            <span class="text-sm font-medium text-gray-700" id="css-score">0/10</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div id="css-progress" class="bg-blue-500 h-2 rounded-full transition-all duration-500" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- React -->
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-lg bg-cyan-100 flex items-center justify-center">
+                        <i class="fab fa-react text-cyan-500 text-2xl"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-sm font-medium text-gray-700">React</span>
+                            <span class="text-sm font-medium text-gray-700" id="react-score">0/10</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div id="react-progress" class="bg-cyan-500 h-2 rounded-full transition-all duration-500" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bootstrap -->
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-lg bg-purple-100 flex items-center justify-center">
+                        <i class="fab fa-bootstrap text-purple-500 text-2xl"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-sm font-medium text-gray-700">Bootstrap</span>
+                            <span class="text-sm font-medium text-gray-700" id="bootstrap-score">0/10</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div id="bootstrap-progress" class="bg-purple-500 h-2 rounded-full transition-all duration-500" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Achievements -->
+        <div class="bg-white rounded-xl shadow-lg p-6 relative">
+            <div class="quiz-required-overlay hidden">
+                <div class="absolute inset-0 bg-white/80 backdrop-blur-sm flex items-center justify-center rounded-xl">
+                    <p class="text-gray-600 font-medium">Complétez le quiz d'abord</p>
+                </div>
+            </div>
+            <h2 class="text-xl font-bold text-gray-800 mb-6">Réalisations</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="achievements-container">
+                
+            </div>
+        </div>
+    </main>
+
+    <script src="../src/scripts/profile.js"></script>
+</body>
+</html>
