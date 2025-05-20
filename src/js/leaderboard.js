@@ -12,7 +12,6 @@ const sampleUsers = [
     { username: "Nadia", points: 9000, score: "8.7", time: "230", lastQuiz: "2025-04-21", avatar: "https://i.pravatar.cc/150?img=16" }
 ];
 
-// Get current user data from localStorage
 function getCurrentUserData() {
     const username = localStorage.getItem('username') || 'Toi';
     const points = parseInt(localStorage.getItem('lastQuizPoints')) || 0;
@@ -73,7 +72,6 @@ function initializeLeaderboard() {
     displayLeaderboard(users);
 }
 
-// Display top 3 players
 function displayTopPlayers(topPlayers) {
     const topPlayersContainer = document.getElementById('top-players');
     const positions = ['2ème Place', '1ère Place', '3ème Place'];

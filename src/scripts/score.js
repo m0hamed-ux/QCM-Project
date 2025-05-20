@@ -597,7 +597,7 @@ function calcScore(){
         let answers = userAnswers[i] || [];
         let sectionKey = ['jsScore', 'htmlScore', 'cssScore', 'reactScore', 'bootstrapScore'][i];
         let sectionTotal = localStorage.getItem(sectionKey) ? parseFloat(localStorage.getItem(sectionKey)) : 0;
-        sectionScore = Math.round(sectionTotal); // Each section is out of 10, 1 point per correct answer
+        sectionScore = Math.round(sectionTotal);
         totalCorrect += sectionScore;
         for (let j = 0; j < answers.length; j++) {
             if (answers[j] === "" || answers[j] === " " || answers[j] === null || typeof answers[j] === "undefined") {

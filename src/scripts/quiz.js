@@ -515,21 +515,19 @@ const questionsList = [
 
 let question = localStorage.getItem('question') || 1;
 let section = localStorage.getItem('section') || 'html';
-// Now userAnswers has 5 arrays: html, css, js, react, bootstrap
 let userAnswers = (localStorage.getItem('userAnswers')) ? JSON.parse(localStorage.getItem('userAnswers')) : [[], [], [], [], []];
-// Add react and bootstrap to sections
 let sections = ['html', 'css', 'js', 'react', 'bootstrap'];
-// Ensure userAnswers has 5 arrays (one for each section)
+
 while (userAnswers.length < 5) userAnswers.push([]);
 
-// Points system
+
 let points = parseInt(localStorage.getItem('points') || '50');
 
 function updatePointsDisplay() {
     document.getElementById('points').textContent = points;
 }
 
-// Timer variables
+
 let timer;
 let timeLeft = 15;
 let fullTime = parseInt(localStorage.getItem('fullTime') || '0');
@@ -604,7 +602,7 @@ function loadData() {
     } else {
     
     }
-    updatePointsDisplay(); // Update points display when quiz loads
+    updatePointsDisplay(); 
     refresh();
     startTimer();
 }
@@ -670,7 +668,7 @@ function refresh() {
             elt.checked = false;
         }
     }
-    startTimer(); // Start timer for new question
+    startTimer(); 
 }
 document.addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
@@ -757,7 +755,7 @@ function result() {
                 overallTotal += totals[idx];
             }
         }
-        let overallScore = (overallTotal / 50) * 10; // out of 10
+        let overallScore = (overallTotal / 50) * 10; 
         localStorage.setItem('score', overallScore);
         window.location.href = 'score.html';
     }

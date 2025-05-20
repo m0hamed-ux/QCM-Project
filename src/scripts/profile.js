@@ -1,4 +1,3 @@
-// Get user data from localStorage
 function getUserData() {
     const username = localStorage.getItem('username') || 'Utilisateur';
     const points = parseInt(localStorage.getItem('lastQuizPoints')) || 0;
@@ -25,7 +24,6 @@ function getUserData() {
     };
 }
 
-// Calculate overall progress
 function calculateOverallProgress(userData) {
     const scores = [
         userData.jsScore,
@@ -35,10 +33,9 @@ function calculateOverallProgress(userData) {
         userData.bootstrapScore
     ];
     const totalScore = scores.reduce((sum, score) => sum + score, 0);
-    return (totalScore / 50) * 100; // 50 is max possible score (10 points per skill)
+    return (totalScore / 50) * 100;
 }
 
-// Calculate statistics
 function calculateStats(userData) {
     const totalScore = (userData.jsScore + userData.htmlScore + userData.cssScore + userData.reactScore + userData.bootstrapScore)/5;
     const totalTime = Math.floor(userData.fullTime / 60) + ':' + (userData.fullTime % 60).toString().padStart(2, '0');
@@ -52,7 +49,6 @@ function calculateStats(userData) {
     };
 }
 
-// Get user rank
 function getUserRank() {
     const points = parseInt(localStorage.getItem('lastQuizPoints')) || 0;
     const currentUser = {
@@ -61,7 +57,6 @@ function getUserRank() {
         avatar: localStorage.getItem('avatar') || "https://i.pravatar.cc/150?img=11"
     };
 
-   
     const allUsers = [...sampleUsers, currentUser];
     const sortedUsers = allUsers.sort((a, b) => b.points - a.points);
     const userRank = sortedUsers.findIndex(user => user.username === currentUser.username) + 1; 
@@ -81,8 +76,6 @@ const sampleUsers = [
     { username: "Nadia", points: 9000, score: "8.7", time: "230", lastQuiz: "2025-04-21", avatar: "https://i.pravatar.cc/150?img=16" }
 ];
 
-
-// Define achievements
 const achievements = [
     {
         id: 'first-quiz',
@@ -142,7 +135,6 @@ const achievements = [
     }
 ];
 
-// Display achievements
 function displayAchievements(userData) {
     const container = document.getElementById('achievements-container');
     const unlockedAchievements = achievements.filter(achievement => achievement.condition(userData));
@@ -156,7 +148,6 @@ function displayAchievements(userData) {
     `).join('');
 }
 
-// Update progress bars with animation
 function updateProgressBars(userData) {
     const skills = ['js', 'html', 'css', 'react', 'bootstrap'];
     skills.forEach(skill => {
@@ -170,7 +161,7 @@ function updateProgressBars(userData) {
         }
     });
 
-    // Update overall progress
+    
     const overallProgress = calculateOverallProgress(userData);
     const overallProgressBar = document.getElementById('overall-progress');
     const progressPercentage = document.getElementById('progress-percentage');
@@ -181,13 +172,11 @@ function updateProgressBars(userData) {
     }
 }
 
-// Check if user has completed any quizzes
 function hasCompletedQuiz() {
     const points = parseInt(localStorage.getItem('lastQuizPoints')) || 0;
     return points > 0;
 }
 
-// Toggle quiz required overlays
 function toggleQuizRequiredOverlays() {
     const hasQuiz = hasCompletedQuiz();
     const overlays = document.querySelectorAll('.quiz-required-overlay');
@@ -204,33 +193,28 @@ function toggleQuizRequiredOverlays() {
     });
 }
 
-// Initialize profile page
 function initializeProfile() {
     const userData = getUserData();
     const stats = calculateStats(userData);
 
-    // Update profile header
+    
     document.getElementById('profile-username').textContent = userData.username;
     document.getElementById('profile-avatar').src = userData.avatar;
     document.getElementById('total-points').textContent = userData.points;
     document.getElementById('rank').textContent = `#${stats.rank}`;
     document.getElementById('join-date').textContent = userData.lastQuiz;
 
-    // Update statistics
+    
     document.getElementById('total-score').textContent = `${stats.totalScore}/10`;
     document.getElementById('user-rank').textContent = `#${stats.rank}`;
     document.getElementById('total-time').textContent = `${stats.totalTime}m`;
     document.getElementById('total-points').textContent = stats.points;
 
-    // Update progress bars
     updateProgressBars(userData);
 
-    // Display achievements
     displayAchievements(userData);
 
-    // Toggle quiz required overlays
     toggleQuizRequiredOverlays();
 }
 
-// Initialize when the page loads
 document.addEventListener('DOMContentLoaded', initializeProfile);
